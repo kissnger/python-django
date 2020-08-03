@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>local_path</title>
+</head>
+
+<body>
+    本地路径 <input id=b type='file'>
+    <script type="text/javascript" charset="UTF-8">
+
+        document.querySelector('#b').addEventListener('change', e => {
+            console.log(e.webkitRelativePath)
+            for (let entry of e.target.files)
+                console.log('*****   ' + entry.name, entry.webkitRelativePath);
+        });
+        function backToSvn(params) {
+            window.location.href = '/svn/'
+        }   
+    </script>
+
+    <form action="/svn/" method="get">
+        local:<input type="text" name="local_path" placeholder="请输入本地址" value={{message}}>
+        <input type="submit">
+        {% if message %}
+        <input onclick="backToSvn()" type="button" value='清除'>
+        {% endif %}
+    </form>
+
+    {% if message %}
+    <p>{{message}}</p>
+    {% elif empty %}
+    <p> {{empty}} </p>
+    {% endif %}
+</body>
+
+</html>

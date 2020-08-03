@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开奖记录</title>
+</head>
+
+<body> 
+    <table>
+        <tr>
+            <td>开奖日期</td>
+            <td>红球</td>
+            <td>蓝球</td>
+        </tr>
+        {% for item in dataList %}
+        <tr>
+            <td>{{item.date}}</td>
+            <td>{{ item.red }}</td>
+            <td>{{item.blue}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
